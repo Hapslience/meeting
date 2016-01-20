@@ -1,0 +1,87 @@
+/*  CSS Document - jQuery Mobile Overrides                */
+/*  Written by Chris Converse - http://codifydesign.com   */
+
+/* Swatch A Overrides */
+.ui-page.ui-body-a.ui-page-active { background: #000 url(../img/home_banner.jpg) no-repeat 50% 0px; }
+.ui-page.ui-body-a.ui-page-active .ui-header.ui-bar-a { display: none; }
+
+#main .ui-content { padding-top: 125px; padding-bottom: 15px; margin: 0px 15px 10px 15px; }
+
+#main .ui-listview { text-align: center; }
+#main .ui-listview .ui-btn {
+	width: 75px;
+	display: inline-block;
+	background: url(../img/home_buttons.png) no-repeat 0px 0px;
+	border: none;
+	margin: 0px 20px 20px 20px;
+}
+#main .ui-listview .ui-btn .ui-li { border: none; }
+#main .ui-listview .ui-btn .ui-li .ui-icon { display: none; }
+#main .ui-listview .ui-btn .ui-li .ui-link-inherit { font-size: .8em; font-weight: normal; padding: 80px 0px 0px 0px; text-align: center; }
+
+
+
+
+/* Swatch C Overrides */
+.ui-page.ui-body-c.ui-page-active { background: #000; }
+.ui-page.ui-body-c.ui-page-active .ui-content { background: #fff; padding-bottom: 10px; }
+.ui-page.ui-body-c.ui-page-active .ui-content .ui-controlgroup { margin: 0px 40px 20px 40px; }
+.ui-page.ui-body-c.ui-page-active .ui-content .ui-controlgroup .ui-btn { text-align: left; }
+
+.ui-body-c, .ui-overlay-c { text-shadow: none; }
+
+
+/* Contact */
+
+.contact_info { display: none; }
+
+
+/* Global Overrides */
+body { background-color: #000; }
+.ui-header {
+	border: none;
+	border-bottom: 1px solid #fff;
+	-moz-box-shadow: 0px 4px 5px rgba(0,0,0,.20);
+	-webkit-box-shadow: 0px 4px 5px rgba(0,0,0,.20);
+	box-shadow: 0px 4px 5px rgba(0,0,0,.20);
+	background: #000 url(../images/content_banner.jpg) no-repeat right 0px;
+	padding: 5px 0px 5px 0px;
+}
+.ui-header h1.ui-title { font-size: 20px; text-align: left; margin: .6em 10px .8em 55px; }
+.ui-header .ui-btn-left { top: 1em; }
+
+.ui-page.ui-body-c.ui-overlay-a.ui-dialog.ui-page-active .ui-header h1.ui-title { margin: .8em 10px .8em 40px; }
+
+.ui-footer.ui-bar-a {
+	border: none;
+	padding-top: 10px;
+	background: #511c04; /* Old browsers */
+	background: -moz-linear-gradient(top,  #511c04 0%, #000000 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#511c04), color-stop(100%,#000000)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #511c04 0%,#000000 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #511c04 0%,#000000 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #511c04 0%,#000000 100%); /* IE10+ */
+	background: linear-gradient(top,  #511c04 0%,#000000 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#511c04', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+
+}
+.ui-footer h4.ui-title { text-align: center; color: #777; font-size: .8em; font-weight: normal; margin: 5px 0px 10px 0px; }
+.ui-footer .ui-controlgroup-horizontal { margin: 10px 20px 15px 20px; text-align: center; }
+
+
+
+/* Content Formatting */
+h2 { margin-top: 0px; color: #a1320c; }
+h3 { margin-top: 0px; color: #a1320c; }
+p { margin: 0px 0px 1em 0px; }
+.services_chart {
+	float: right;
+	margin: 0px 0px 20px 20px; 
+	border: 2px solid #fff;
+	-moz-box-shadow: 0px 4px 7px rgba(0,0,0,.20);
+	-webkit-box-shadow: 0px 4px 7px rgba(0,0,0,.20);
+	box-shadow: 0px 4px 7px rgba(0,0,0,.20);
+}
+p.intro { font-size: 1.5em; color: #aaa; line-height: 1.2em; }
+
+

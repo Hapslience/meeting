@@ -1,0 +1,392 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" /> 
+ 
+
+  <link rel="stylesheet" href="css/jquery.mobile-1.4.5.css" /><!--/引入JQuery Mobile的CSS文件-->
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script type="text/javascript" src="js/jquery-2.1.3.js"></script><!--/引入JQuery-->
+  <script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script><!--/引入JQuery Mobile-->
+  <script type="text/javascript" src="js/webmobile-phonegap.js"></script>
+
+  
+
+
+</head>
+
+<body> 
+  <div id="loginForm" data-role="page"  data-dom-cache="true" > 
+  <div class="top"data-role="header" id="loginForm-header" data-position="fixed" data-inline="true" data-theme="b">
+  <!--<a data-icon="back" class="ui-btn-left" id="back" data-rel="back" data-iconpos="notext" data-role="button">返回</a>-->
+  <h1>登录/注册</h1>
+  </div>
+
+ <!-- <div>
+        --> 
+  <divdata-role="content">
+  <img class="left" src="images/manage.jpg" width="500" height="230" /> 
+  
+    <div class="right" data-role="fieldcontain">
+      <label for="user_name">用户名:</label>
+      <input type="text" id="userName" placeholder="input" />   
+      <label for="password">密码:</label>
+      <input type="passWord" id="passWord" placeholder="input" />
+      <a id="login" href="#" data-role="button" data-inline="true">登陆</a>
+      <a id="reg" href="#regInfoPage" data-role="button" data-inline="true">注册</a>
+    </div>
+  
+
+  </div> 
+
+ 
+
+<div id="groupInfo" data-role="page" data-dom-cacahe="true">
+  <div data-role="header" data-theme="b">
+    <h1>组织操作</h1>
+    <a data-icon="back" class="ui-btn-left" id="back" href = "#main" data-iconpos="notext" data-role="button">返回</a>
+  </div>
+  <div data-role="content">
+
+    <ul data-role="listview">
+      <li data-icon="false" data-ajax="false"><a  id = "toUserInfo"   href="#groupInfoListPage">组织列表</a></li>
+      <li><a id="toUserInfo" href="#createGroupPage" class="btn_a icon_list_item">创建组织</a></li>
+      <li data-icon="false" data-ajax="false"><a  id = "toUserInfo"   href="#searchForGroup">搜索组织</a></li>
+    </ul>
+  </div>
+</div>
+
+<div data-role="page" id="groupInfoListPage" data-dom-cache="true">
+  <div data-role="header" data-theme="b">
+    <h1>我的组织</h1>
+    <a  data-icon="bars" class="ui-btn-left" id="back" href = "#groupInfoListPage_groupMenuPanel" data-iconpos="notext" data-role="button">返回</a>
+  </div>
+  <div data-role="content">
+    <ul id="groupInfoList" data-role="listView" data-inset="true" data-filter="true" data-filter-placeholder="搜索组织..." >
+    </ul>
+  </div>
+  <div data-role="panel" data-panel="menu" id="groupInfoListPage_groupMenuPanel" data-position="left" data-display="push" data-autoshow="once" data-theme="a">
+  <ul data-role="listview" data-icon="false">
+            <li data-icon="delete"><a href="#" data-rel="close">关闭菜单</a></li>
+            <li data-role="list-divider">组织信息</li>
+      <li><a id = "toGroupListInfo" href="#main">回到首页</a></li>
+      <li><a id = "toCreateGroup" href="#createGroupPage">创建组织</a></li>
+      <li><a id = "toSearchForGroup" href="#searchForGroup">搜索组织</a></li>
+  </ul>   
+  </div>
+  <div data-role="panel" data-panel="menu" id="groupInfoListPage_groupInfoOptionMenuPanel" data-position="left" data-display="push" data-autoshow="once" data-theme="a">
+    <ul data-role="listview" data-icon="false">
+        <li data-icon="delete"><a href="#" data-rel="close">关闭菜单</a></li>
+        <li data-role="list-divider">组织信息操作选项</li>
+        <li><a href="#groupDetailInfo" id = "getGroupDetailInfo">查看组织信息</a></li>
+        <li><a href="#acceptForApplyForGroupPage" id = "getGroupAcceptInfo">批准新成员加入（管理员）<span id = "groupAcceptUserCount"class="ui-li-count">1</span></a></li>
+        <li><a href="#createMeetingPage" id = "toCreateMeetingPage">发起新会议（管理员）</a></li>
+    </ul>   
+  </div>
+</div>
+
+<div data-role="page" id="searchForGroup" data-dom-cache="true">
+  <div data-role="header" data-theme="b">
+    <h1>搜索并加入组织</h1>
+    <a  data-icon="bars" class="ui-btn-left" id="back" href = "#searchForGroupPage_groupMenuPanel" data-iconpos="notext" data-role="button">返回</a>
+  </div>
+  <div data-role="content">
+    <div class="ui-field-contain">
+      <a  data-icon="search" id="searchForGroupInputSubmit" data-inline="true" data-iconpos="notext" data-role="button" for="search_1" ></a>
+        <input type="search" name="search_1" id="searchForGroupInput"  data-inset="true" placeholder = "请输入组织名称..." value="">
+    </div>
+    <ul id = "searchedGroupList" data-role="listview"  data-inset="true" data-icon = "plus">
+    </ul>
+  </div>
+  <div data-role="popup" id="applyForGroupPopup" data-dismissible="false" data-overlay-theme="b" data-theme="b" style="max-width:800px;">
+    
+      <div role="main" class="ui-content">
+      <h3 class="ui-title">确认要申请加入该组织吗？</h3>
+          <a  class="ui-btn ui-corner-all ui-shadow  ui-btn-b" id="applyForGroupButton" data-role="button">确认</a>
+        </div>
+  </div><!-- /申请加入组织popup-->
+  <div data-role="panel" data-panel="menu" id="searchForGroupPage_groupMenuPanel" data-position="left" data-display="push" data-autoshow="once" data-theme="a">
+    <ul data-role="listview" data-icon="false">
+        <li data-icon="delete"><a href="#" data-rel="close">关闭菜单</a></li>
+        <li data-role="list-divider">组织信息</li>
+        <li><a id = "toGroupListInfo" href="#main">回到首页</a></li>
+        <li><a id = "toGroupListInfo" href="#groupInfoListPage">查询所属组织信息</a></li>
+        <li><a id = "toSearchForGroup" href="#searchForGroup">创建组织</a></li>
+    </ul>
+  </div>
+  
+</div> 
+
+<div id="createGroupPage" data-role="page" data-dom-cache="true">
+  <div data-role="header" data-theme="b">
+    <h1>创建组织</h1>
+    <a data-icon="bars" href="#createGroupPage_groupMenuPanel"data-iconpos="notext" id="back" data-role="button">返回</a>
+
+  </div>
+  <div data-role="content">
+    <form id="createGroupInfoForm">
+      <div data-role="fieldcontain">
+        <label for="name">组织名</label>
+        <input type="text" name="groupName" id="name" placeholder="组织名"data-theme="a">
+        <br></br>
+      </div>
+      <div data-role="fieldcontain">
+        <label for="name">最大人数</label>
+        <input type="text" name="maxSize"id="name"placeholder="最大人数" data-theme="a">
+        <br></br>
+      </div>
+      <div data-role="fieldcontain">
+        <label for="switch">是否需要验证</label>
+        <select name="switch" id="switch" data-role="slider">
+          <option value="on">ON</option>
+          <option value="off">OFF</option>
+        </select>
+        <br></br>
+      </div>
+    </form>
+    <input type="submit" value="提交" data-inline="true" id="sureCreateGroup"/>
+  </div>
+ <div data-role="panel" data-panel="menu" id="createGroupPage_groupMenuPanel" data-position="left" data-display="push" data-autoshow="once" data-theme="a">
+  <ul data-role="listview" data-icon="false">
+            <li data-icon="delete"><a href="#" data-rel="close">关闭菜单</a></li>
+            <li data-role="list-divider">组织信息</li>
+            <li><a id = "toGroupListInfo" href="#main">回到首页</a></li>
+            <li><a href="#searchForGroup">搜索组织</a></li>    
+  </ul>
+ </div>
+</div>
+
+<div data-role="header">
+</div>
+<div id="regInfoPage" data-role="page"data-dom-cache="true">
+  <div data-role="header" data-position="fixed" data-theme="a">
+    <h2>注册</h2>
+    <a  data-icon="back" class="ui-btn-left" id="back" data-rel="back" data-iconpos="notext" data-role="button">返回</a>
+  </div>
+  <div data-role="content">
+    <div data-role="fieldcontain">
+      <label for="regUserName">用户名:</label>
+      <input type="text" id="regUserName" />
+      <label for="regPassWord">密码：</label>
+      <input type="passWord" id="regPassWord" />
+      <label for="regEmail">邮箱</label>
+      <input type="email" id="regEmail" />
+      <label for="regTelephone">手机号</label>
+      <input type="text" id="regTelephone" />
+    </div>
+    <a href="#" id="regSure"data-role="button" data-inline="true" data-iconshadow="true">确定</a>
+  </div>
+</div>
+
+<div id="main" class="page" data-role="page" data-dom-cache="true"> <!--/页面标签-->
+  <div data-role="header" id="index-header" data-position="fixed" data-inline="true" data-theme="b"><!--/页眉-->
+	<label id = "loginInfoLable" for="input" class = "ui-block-e">a</label>
+    <h1>会议互动信息系统</h1>
+	<a id="add" href="#loginForm" data-icon="plus" class="ui-btn-right">登陆</a>
+	<a id="logout" href="#" data-icon="delete" class="ui-btn-right">登出</a>
+  </div> 
+  <div id="color-bar"></div>
+  <div data-role="content" class = "full-width" ><!--/页面主要内容 class = "full-width" data-inset="true" data-theme="b"-->
+    <ul  id ="mainListView" data-role="listview"  data-inset="true" > 
+      <li style = "display: inline-block;" data-icon="false" data-ajax="false"><a  class="btn_a icon_list_item" id = "toUserInfo"   href="#userInfo">个人中心</a></li>
+      <li style = "display: inline-block;" data-icon="false" data-ajax="false"><a  class="btn_s icon_list_item" id = "toGroupInfo"   href="#groupInfo">组织</a></li>
+      <li style = "display: inline-block;" data-icon="false" data-ajax="false"><a  class="btn_l icon_list_item" href="#managedMeetingListPage">会议管理</a></li>
+      <li style = "display: inline-block;" data-icon="false" data-ajax="false"><a  class="btn_c icon_list_item" id = "toMeetingInfo" href="#meetingInfo">我的会议</a></li>
+    </ul>
+  </div> 
+  
+</div> 
+
+
+
+<div data-role="page" class="ui-page" id="userInfo" data-dom-cache="true">
+  <div data-role="header" data-theme="b">
+    <h1>用户信息</h1>
+	<a  data-icon="back" class="ui-btn-left" id="back" data-rel="back" data-iconpos="notext" data-role="button">返回</a>
+  </div>
+  
+  <div data-role="content" class = "full-width">
+    <ul data-role="listview">
+	  <li  style = "display: inline-block;"data-icon="false" data-ajax="false">
+      <a  class="btn_a icon_list_item" id = "toUserInfo"   href="#userDetailInfo">个人信息</a></li>
+	  <li style = "display: inline-block;" data-icon="false" data-ajax="false"><a  class="btn_s icon_list_item" id = "toUserInfo"   href="#userChangePassWord">更改密码</a></li>
+    </ul>
+  </div>
+</div>
+
+<div id="userDetailInfo" data-role="page"  data-dom-cache="true">
+  <div data-role="header" data-theme="b">
+    <h1>用户个人信息</h1>
+	<a  data-icon="bars" class="ui-btn-left" id="back" href = "#userInfoPage_userMenuPanel" data-iconpos="notext" data-role="button">返回</a>
+  </div>
+
+  <div data-role="content">
+	<h2>Welcome to find your information</h2>
+    <ul data-role="listview" data-inset="true">
+      <li>
+		<div data-role="fieldcontain">
+			<label for="user_name">用户名:</label>
+			<label id = "userNameInPage" for="user_name"></label>
+		</div>
+	  </li>
+     <li>
+    <div data-role="fieldcontain">
+      <label for="user_name">手机号:</label>
+      <label id = "telePhone" for="user_name"></label>
+    </div>
+    </li>
+    <li>
+    <li>
+    <div data-role="fieldcontain">
+      <label for="user_name">邮箱:</label>
+      <label id = "email" for="user_name"></label>
+    </div>
+    </li>
+    <li>
+    <!--<li>
+		<div data-role="fieldcontain">
+			<label for="user_name">上次登录时间:</label>
+			<label id = "lastLoginTime" for="user_name">2</label>
+		</div>
+	  </li>-->
+	  <!--<li>
+		<div data-role="fieldcontain">
+			<label for="user_name">注册时间:</label>
+			<label id = "regTime" for="user_name">2</label>
+		</div>
+	  </li>-->
+    </ul>
+  </div>
+  <div data-role="panel" data-panel="menu" id="userInfoPage_userMenuPanel" data-position="left" data-display="push" data-autoshow="once" data-theme="a">
+	<ul data-role="listview" data-icon="false">
+            <li data-icon="delete"><a href="#" data-rel="close">关闭菜单</a></li>
+            <li data-role="list-divider">用户信息</li>
+			<li><a id = "toGroupListInfo" href="#main">回到首页</a></li>
+            <li><a href="#userChangePassWord">更改密码</a></li>
+	</ul>
+		
+   </div>
+
+</div>
+
+<div data-role="page" id="userChangePassWord" data-dom-cache="true" class = "ui-page" >
+  <div data-role="header" data-theme="b">
+    <h1>修改密码</h1>
+	<a  data-icon="bars" class="ui-btn-left" id="back" href = "#userChangeWordPage_userMenuPanel" data-iconpos="notext" data-role="button">返回</a>
+  </div>
+  <div data-role="content"  class="full-width"   >
+	<div data-role="fieldcontain">
+        <label for="fullname">请输入原密码：</label>
+        <input type="password" name="fullname" id="oldPassWord">       
+        <label for="bday">请输入新密码：</label>
+        <input type="password" name="bday" id="newPassWord">
+        <label for="email">请再输入一次新密码：</label>
+        <input type="password" name="email" id="newPassWordAg">
+     </div>
+	  <input type="submit" id = "changePassWordSubmit" data-inline="true" value="提交">
+  </div>
+    <div data-role="panel" data-panel="menu" data-dom-cache="true" id="userChangeWordPage_userMenuPanel" data-position="left" data-display="push" data-autoshow="once">
+	<ul data-role="listview" data-icon="false">
+            <li data-icon="delete"><a href="#" data-rel="close">关闭菜单</a></li>
+            <li data-role="list-divider">用户信息</li>
+			      <li><a id = "toGroupListInfo" href="#main">回到首页</a></li>
+            <li><a href="#userChangePassWord">更改密码</a></li>
+	</ul>
+   </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div data-role="page" id="managedMeetingListPage" data-dom-cache="true">
+  <div data-role="header" data-theme="b">
+    <h1>您管理的会议列表</h1>
+  <a  data-icon="back" class="ui-btn-left" id="back" href = "#main" data-iconpos="notext" data-role="button">返回</a>
+  </div>
+  <div data-role="content">
+  <ul id = "managedMmeetingInfoList" data-role="listview"  data-inset="true" >
+
+  </ul>
+  </div>
+</div> 
+
+<div data-role="page" id="createMeetingPage" data-dom-cache="true">
+
+  <div data-role="header" data-theme="b">
+    <h1>发起新会议</h1>
+  <a  data-icon="back" class="ui-btn-left" id="back" data-rel="back" data-iconpos="notext" data-role="button"></a>
+  </div>
+  <div data-role="content" >
+    <form id = "createMeetingInfoForm">
+
+    <label for="meetingName">会议名称：</label>
+    <input type="text" name="meetingName" id="meetingName" placeholder="会议名称..." >
+    <br><br>
+    
+    <label for="meetingUserSize">与会人数：</label>
+    <input type="text" name="meetingUserSize" id="meetingUserSize" placeholder="与会人数..." data-theme="a">
+    <br><br>
+
+    <label for="meetingStartDate">会议开始日期：</label>
+    <input type="date" name="meetingStartDate" id="meetingStartDate">
+    <br><br>
+    
+    <label for="meetingEndDate">会议结束日期：</label>
+    <input type="date" name="meetingEndDate" id="meetingEndDate">
+    <br><br>
+    
+    <label for="meetingAddr">会议地址：</label>
+    <input type="text" name="meetingAddr" id="meetingAddr">
+
+    </form>
+    <input type="submit" id = "createMeeingSubmit" data-inline="true" value="提交">
+  </div>
+</div> 
+<div data-role="page" id="meetingListPage" data-dom-cache="true">
+  <div data-role="header" data-theme="b">
+    <h1>正在进行的会议列表</h1>
+  <a  data-icon="back" class="ui-btn-left" id="back" href = "#main" data-iconpos="notext" data-role="button">返回</a>
+  </div>
+
+  <div data-role="content" class = "full-width">
+  <ul id = "meetingInfoList" data-role="listview"  data-inset="true" >
+  </ul>
+  </div>
+    <div data-role="panel" data-panel="menu" id="meetingListPage_meetingMenuPanel" data-position="left" data-display="push" data-autoshow="once" data-theme="a">
+  <ul data-role="listview" data-icon="false">
+            <li data-icon="delete"><a href="#" data-rel="close">关闭菜单</a></li>
+            <li data-role="list-divider">会议信息</li>
+      <li><a id = "toGroupListInfo" href="#main">回到首页</a></li>
+      <li><a id = "toGroupListInfo" href="#pageone">日程表</a></li>
+      <li><a id = "toCreateGroup" href="#fileSharingPage">文件发布</a></li>
+      <li><a id = "toSearchForGroup" href="#fileDownloadPage">文件下载</a></li>
+  </ul>
+  </div>
+</div> 
+<div data-role="page" id="meetingInfo" data-dom-cache="true">
+  <div data-role="header" data-theme="b">
+    <h1>会议信息</h1>
+  <a  data-icon="back" class="ui-btn-left" id="back" href = "#main" data-iconpos="notext" data-role="button">返回</a>
+  </div>
+  <div data-role="content" class="full-width" >
+    <ul data-role="listview">
+   <li style = "display: inline-block;" data-icon="false" data-ajax="false"><a  class="btn_a icon_list_item" id = "toUserInfo"   href="#pageone">日程表</a></li>
+    <li style = "display: inline-block;" data-icon="false" data-ajax="false"><a  class="btn_s icon_list_item" id = "toUserInfo"   href="#meetingAttenderPage">人员名单</a></li>
+    <li style = "display: inline-block;" data-icon="false" data-ajax="false"><a  class="btn_l icon_list_item" id = "toUserInfo"   href="#meetingMapInfoPage">会议周边</a></li>
+    <li style = "display: inline-block;" data-icon="false" data-ajax="false"><a  class="btn_d icon_list_item" id = "toUserInfo"   href="#meetingNotePage">会议纪要</a></li>
+    <li style = "display: inline-block;" data-icon="false" data-ajax="false"><a  class="btn_c icon_list_item" id = "toUserInfo"   href="#fileDownloadPage">官方文件</a></li>
+    <li style = "display: inline-block;" data-icon="false" data-ajax="false"><a  class="btn_b icon_list_item" id = "toUserInfo"   href="#fileSharingPage">文件上传</a></li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

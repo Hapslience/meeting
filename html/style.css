@@ -1,0 +1,9 @@
+body{ 
+	overflow-y:hidden;
+	height:30px;     margin:0; padding:0;background-color: white;
+}
+
+.top{background-color: #ccc; width:100%;height:50px;}
+
+.left{ width:50%;height:50%;position:absolute;left:0;top:100px;padding-top: 5%;padding-left:8%; }
+.right{padding-top: 25%; margin-right: 25%; height:500px;margin-left:50%;}

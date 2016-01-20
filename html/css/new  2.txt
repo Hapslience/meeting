@@ -1,0 +1,14 @@
+<ul data-role="listview" class="ui-listview">
+      <li class="btn_a ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-a" data-theme="a"><div class="ui-btn-inner ui-li" aria-hidden="true"><div class="ui-btn-text"><a href="#userDetailInfo" class="ui-link-inherit">用户注册信息</a></div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span></div></li>
+      <li class="btn_s ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-a" data-theme="a"><div class="ui-btn-inner ui-li" aria-hidden="true"><div class="ui-btn-text"><a href="#groupInfoListPage" class="ui-link-inherit">组织信息</a></div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span></div></li>
+	  <li class="btn_l ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-a" data-theme="a"><div class="ui-btn-inner ui-li" aria-hidden="true"><div class="ui-btn-text"><a href="#managedMeetingListPage" class="ui-link-inherit">会议管理</a></div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span></div></li>
+      <li class="btn_c ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-a" data-theme="a"><div class="ui-btn-inner ui-li" aria-hidden="true"><div class="ui-btn-text"><a href="#meetingListPage" class="ui-link-inherit">会议信息</a></div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span></div></li>
+				</ul>
+				
+				
+				<ul id="mainListView" data-role="listview" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow"> 
+      <li class="ui-first-child"><a class="btn_a ui-btn ui-btn-icon-right ui-icon-carat-r" id="toUserInfo" href="#userDetailInfo">用户注册信息</a></li>
+      <li><a class="btn_s ui-btn ui-btn-icon-right ui-icon-carat-r" id="toGroupInfo" href="#groupInfoListPage">组织信息</a></li>
+	  <li><a class="btn_l ui-btn ui-btn-icon-right ui-icon-carat-r" href="#managedMeetingListPage">会议管理</a></li>
+      <li class="ui-last-child"><a class="btn_c ui-btn ui-btn-icon-right ui-icon-carat-r" id="toMeetingInfo" href="#meetingListPage">会议信息</a></li>
+    </ul>
